@@ -44,6 +44,7 @@ function Header() {
             onClick={toggleMenu}
           >
             {menuOpen ? (
+              // Close Icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -59,6 +60,7 @@ function Header() {
                 />
               </svg>
             ) : (
+              // Hamburger Icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -104,11 +106,32 @@ function Header() {
               menuOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out lg:hidden`}
           >
-            <ul className="flex flex-col items-start w-full p-4 space-y-2">
+            <div className="flex flex-col items-start w-full h-full p-4 space-y-2">
+              {/* Close Button for Mobile Menu */}
+              <button
+                className="self-end text-white"
+                onClick={toggleMenu}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
               {navItems.map(
                 (item) =>
                   item.active && (
-                    <li key={item.name}>
+                    <li key={item.name} className="w-full">
                       <button
                         onClick={() => handleNavigation(item.slug)}
                         className="block w-full px-4 py-2 text-white duration-200 rounded-lg hover:bg-gray-700 hover:text-blue-300"
@@ -123,7 +146,7 @@ function Header() {
                   <LogoutBtn />
                 </li>
               )}
-            </ul>
+            </div>
           </div>
         </nav>
       </Container>
